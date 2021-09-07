@@ -1498,10 +1498,15 @@ messagedialog,
 .prompt {-gtk-icon-style: regular;}
 
 dialog buttonbox,
-.dialog-action-area{ padding: 8px;}
+.dialog-action-area
+,
 
 messagedialog .dialog-action-area,
-window.dialog.message.csd .dialog-action-area{padding: 8px;}
+window.dialog.message.csd .dialog-action-area
+{padding: 8px;}
+
+.budgie-session-dialog .linked.horizontal,
+.budgie-polkit-dialog .linked.horizontal{margin: 8px;}
 
 headerbar.flat,
 dialog .titlebar.default-decoration,
