@@ -60,7 +60,7 @@ popover.menu.background > contents .linked button:last-child{ margin-right: 4px;
 /* Tooltips */
 
 tooltip { padding: 4px; border-radius: 3.0px; box-shadow: none; }
-tooltip.background { background-color: @gtk_bg_color; background-clip: padding-box; border: 1px solid @gtk_transparent_borders; color: @gtk_fg_color; }
+tooltip.background { background-color: alpha(black,0.9); background-clip: padding-box; border: 1px solid alpha(white,0.2); color: white; }
 tooltip > box { border-spacing: 6px; }
 
 /* Entry */

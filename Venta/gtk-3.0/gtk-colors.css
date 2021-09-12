@@ -9,11 +9,6 @@
 @define-color error_color #D94141;
 @define-color success_color #00a300;
 
-@define-color gtk_shadow alpha(black,0.3);
-@define-color text_shadow_color alpha(@panel_bg,0.5);
-@define-color gtk_button_shadow alpha(@gtk_shadow,0.2);
-@define-color gtk_menu_shadow alpha(@gtk_shadow,0.5);
-
 @define-color panel_bg shade(@gtk_titlebar_bg_color,0.95);
 @define-color panel_fg @gtk_titlebar_fg_color;
 
@@ -34,7 +29,7 @@
 @define-color text_view_bg @gtk_base_color;
 @define-color content_view_bg @gtk_base_color;
 
-@define-color insensitive_bg_color alpha(@gtk_base_color,0.3);
+@define-color insensitive_bg_color transparent;
 @define-color insensitive_fg_color alpha(@gtk_fg_color,0.5);
 @define-color insensitive_base_color @gtk_base_color;
 @define-color unfocused_insensitive_color @insensitive_fg_color;
@@ -60,12 +55,10 @@
 
 @define-color metacity_theme @gtk_titlebar_bg_color;
 @define-color metacity_theme_unfocused @gtk_titlebar_bg_backdrop_color;
-@define-color metacity_highlight transparent;
 @define-color wm_title @gtk_titlebar_fg_color;
 @define-color wm_unfocused_title alpha(@gtk_titlebar_fg_color,0.5);
 @define-color m_button_hover alpha(@gtk_titlebar_fg_color,0.1);
 @define-color m_button_active	alpha(@gtk_titlebar_fg_color,0.2);
-@define-color m_border	shade(@gtk_titlebar_bg_color,0.7);
 
 @define-color tab_base_color @gtk_base_color;
 @define-color colorAccent @gtk_selected_bg_color;

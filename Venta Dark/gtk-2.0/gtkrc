@@ -1,4 +1,4 @@
-gtk_color_scheme = "fg_color:#fff\nbg_color:#262626\nbase_color:#393939\ntext_color:#fff\nselected_bg_color:#0078D4\nselected_fg_color:#fff\ntooltip_bg_color:#262626\ntooltip_fg_color:#fff\nborder_color:#222"
+gtk_color_scheme = "fg_color:#fff\nbg_color:#333\nbase_color:#232323\ntext_color:#fff\nselected_bg_color:#0078D4\nselected_fg_color:#fff\ntooltip_bg_color:#333\ntooltip_fg_color:#fff\nborder_color:#666"
 
 style "default"
 {
@@ -90,7 +90,7 @@ style "button"
 	xthickness = 4
 	ythickness = 4
 
-	engine "murrine" {roundness = 3}
+	engine "murrine" {roundness = 3 border_colors = {@border_color, @border_color}}
 
 	bg[NORMAL] = @base_color
 	bg[PRELIGHT] = mix(0.1, @fg_color,@base_color)
@@ -112,8 +112,6 @@ style "progressbar"
 	ythickness = 0
 	
 	fg[PRELIGHT] = @selected_fg_color
-	
-	engine "murrine" {contrast = 0.0}
 }
 
 style "scale"
@@ -122,10 +120,10 @@ style "scale"
 	GtkScale       ::slider-length = 14
 	GtkScale		    ::trough-side-details = 1
 	
-	engine "murrine" {roundness = 9999 contrast = 0.0}
+	engine "murrine" {roundness = 9999}
 	
-	bg[NORMAL] = @selected_bg_color
-	bg[PRELIGHT] = @selected_bg_color
+	bg[NORMAL] = @selected_fg_color
+	bg[PRELIGHT] = @selected_fg_color
 }
 
 style "menubar" 

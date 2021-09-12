@@ -102,13 +102,13 @@ treeview.view{ color: @gtk_fg_color;}
 spinbutton:not(.vertical),
 entry,
 /*check,
-radio,
+radio,*/
 switch,
 switch slider,
 progressbar trough,
 /*progressbar progress,
-scale highlight,
-scale trough,*/
+scale highlight,*/
+scale trough,
 levelbar trough,
 menu,
 .menu,
@@ -350,7 +350,7 @@ infobar entry{font-weight: normal;}
 button,
 .inline-toolbar button.flat,
 .inline-toolbar button
-{border: 1px solid @gtk_transparent_borders; box-shadow: none; background-clip: padding-box;}
+{border: 1px solid @gtk_transparent_borders; box-shadow: 0 1px @gtk_button_shadow; background-clip: padding-box;}
 
 button,
 .inline-toolbar button.flat,
@@ -368,17 +368,14 @@ spinbutton.vertical entry
 
 /* Action Button */
 
-button.suggested-action, .titlebar button.suggested-action,
-button.destructive-action, .titlebar button.destructive-action{background-clip: border-box;}
+button.suggested-action,
+button.destructive-action{background-clip: border-box; font-weight: bold;}
 
-button.suggested-action,button.destructive-action{font-weight: bold;}
-
-button.suggested-action,.titlebar button.suggested-action{background-color: @gtk_selected_bg_color; color: @gtk_selected_fg_color; border-color: transparent; }
+button.suggested-action{color: mix(@gtk_selected_bg_color,@gtk_fg_color,0.2); background-color: alpha(currentcolor,0.2);}
+button.destructive-action{color: mix(@error_color,@gtk_fg_color,0.2); background-color: alpha(currentcolor,0.2);}
 
 button.suggested-action:disabled,
-button.destructive-action:disabled{background-color: mix(@gtk_bg_color,@gtk_fg_color,0.2); color: alpha(@gtk_fg_color,0.5); border-color: transparent; box-shadow: none; }
-
-button.destructive-action{color: white; background-color: @error_color; border-color: transparent;}
+button.destructive-action:disabled{ background-color: alpha(currentcolor,0.1);}
 
 /* Flat Button */
 
@@ -408,11 +405,13 @@ calendar header button:disabled,
 	background-image: none;
 }
 
-.titlebar button{min-width: 34px; min-height: 34px; padding: 0px; border: none; border-radius: 0px; background-color: transparent;}
+.titlebar button{min-width: 34px; min-height: 34px; padding: 0px; border: none; border-radius: 0px; background-color: transparent; box-shadow: none;}
 
 .titlebar button.text-button{padding: 0 5px;}
 
-.titlebar button:not(.suggested-action):not(.destructive-action).text-button:checked{box-shadow: inset 0 -3px @gtk_selected_bg_color; background-image: none; }
+.titlebar button:not(.suggested-action):not(.destructive-action).text-button:checked,
+.titlebar viewswitcher button:not(.suggested-action):not(.destructive-action):active,
+.titlebar viewswitcher button:not(.suggested-action):not(.destructive-action):checked{box-shadow: inset 0 -3px @gtk_selected_bg_color; background-image: none; }
 
 .titlebar.windowhandle{ min-height: 34px;}
 
@@ -428,7 +427,7 @@ infobar button:not(.suggested-action):not(.destructive-action):not(.flat)
 button:hover,
 .inline-toolbar button.flat:hover,
 .inline-toolbar button:hover
-{box-shadow: inset 0 0 0 1px alpha(currentcolor,0.4); background-image: none;}
+{box-shadow: inset 0 0 0 1px alpha(currentcolor,0.4), 0 1px @gtk_button_shadow; background-image: none;}
 
 /*.titlebar .linked button:not(.suggested-action):not(.destructive-action):hover,
 .titlebar button:not(.suggested-action):not(.destructive-action).text-button:hover,*/
@@ -468,7 +467,7 @@ button.flat:active,
 .titlebar button:not(.suggested-action):not(.destructive-action):active,
 .titlebutton:active,
 windowcontrols button:active,
-viewswitcher button:active,
+/*viewswitcher button:active,*/
 spinbutton:not(.vertical) button:active,
 notebook tab:not(:checked):active,
 .budgie-panel button.launcher.flat:active,
@@ -499,7 +498,7 @@ button.flat:checked,
 .titlebar button:not(.suggested-action):not(.destructive-action):checked,
 .titlebutton:checked,
 windowcontrols button:checked,
-viewswitcher button:checked,
+/*viewswitcher button:checked,*/
 spinbutton:not(.vertical) button:checked,
 notebook tab:checked,
 .budgie-panel button.launcher.flat:checked,
@@ -752,7 +751,11 @@ check:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/checkbox-mixed-
 radio:checked { -gtk-icon-source: -gtk-recolor(url("assets/radio-symbolic.svg"));}
 radio:indeterminate { -gtk-icon-source: -gtk-recolor(url("assets/radio-mixed-symbolic.svg"));}
 
-check,radio { background-clip: padding-box; border: 1px solid @gtk_transparent_borders;}
+check,
+radio,
+treeview.view.content-view.check:not(list),
+iconview.content-view.check:not(list),
+.content-view:not(list) check { background-clip: padding-box; border: 1px solid @gtk_transparent_borders;}
 
 check:checked,
 check:indeterminate,
@@ -873,9 +876,6 @@ popover .keycap{
  * Sliders *
  ***********/
 
-progressbar trough,
-scale trough{background-color: alpha(currentcolor,0.2);}
-
 switch:checked,
 progressbar progress,
 levelbar block:not(.empty),
@@ -891,24 +891,22 @@ switch:disabled image,
 .titlebar switch image:disabled	{color:transparent;}
 
 switch,
-switch slider{border-radius: 9999px;}
+switch slider{border-radius: 3.0px;}
 
-switch{color: currentcolor; background-color: alpha(currentcolor,0.3); background-clip: border-box;}
-
-switch:checked{border-color: transparent;}
+switch{color: currentcolor; background-color: alpha(currentcolor,0.2); background-clip: border-box;}
 
 switch slider {
-	margin: 6px;
-	background-color: currentcolor;
-	min-height: 12px;
-	min-width: 12px;
+	margin: 4px;
+	background-color: @gtk_selected_fg_color;
+	min-height: 14px;
+	min-width: 14px;
 	border:  none;
-	box-shadow: none;
+	box-shadow: 0 0 0 1px alpha(black,0.2);
 }
 
 switch:disabled,
 switch slider:disabled,
-switch slider:checked:disabled { color:  alpha(currentcolor,0.5);}
+switch slider:checked:disabled { background-color:  alpha(currentcolor,0.1);}
 
 switch:checked:disabled,
 scale highlight:disabled,
@@ -922,7 +920,7 @@ scale slider{ background-color: transparent; padding: 8px; margin: -8px; box-sha
 
 scale:hover slider,
 scale.marks-after slider,
-scale.marks-before slider{background-color: @gtk_selected_bg_color; box-shadow: none; }
+scale.marks-before slider{background-color: white; box-shadow:  0 0 0 1px alpha(black,0.2); }
 
 /* Scrollbars */
 
@@ -1429,15 +1427,15 @@ infobar {
 infobar:not(.info):not(.warning):not(.error):not(.question)
 {background-color: transparent;}
 
-infobar.info {background-color: @success_color;}
-infobar.warning{background-color: @warning_color;}
-infobar.question {background-color: @gtk_selected_bg_color;}
-infobar.error{background-color: @error_color;}
+infobar.info,
+infobar.warning,
+infobar.question,
+infobar.error{background-color: mix(@gtk_bg_color,currentcolor,0.2);}
 
-infobar.info > label, infobar.info, infobar.info button {color: mix(@success_color,black,0.5);}
-infobar.warning > label, infobar.warning, infobar.warning button {color: mix(@warning_color,black,0.5);}
-infobar.question > label, infobar.question, infobar.question button,
-infobar.error > label, infobar.error, infobar.error button {color: white;}
+infobar.info > label, infobar.info, infobar.info button {color: mix(@success_color,@gtk_fg_color,0.3);}
+infobar.warning > label, infobar.warning, infobar.warning button {color: mix(@warning_color,@gtk_fg_color,0.3);}
+infobar.question > label, infobar.question, infobar.question button{color: mix(@gtk_selected_bg_color,@gtk_fg_color,0.3);}
+infobar.error > label, infobar.error, infobar.error button {color: mix(@error_color,@gtk_fg_color,0.3);}
 
 infobar label:disabled{color: alpha(currentcolor,0.5);}
 
@@ -1585,7 +1583,7 @@ dialog filechooser stack actionbar{ border-top: 1px solid @gtk_borders;}
 dialog filechooser paned separator{ background: none; min-width: 0;}
 dialog filechooser paned separator.horizontal{ background: @gtk_borders; }
 
-dialog filechooser placessidebar row{padding: 4px;}
+dialog filechooser .sidebar list row{padding: 4px;}
 
 filechooserbutton:drop(active) {box-shadow: none; border-color: transparent;}
 
