@@ -7,6 +7,8 @@
 .applet-box{padding: 0 10px;}
 .applet-box.vertical{padding: 10px 0;}
 
+.sound-player StButton:small{padding: 0;}
+
 StScrollBar StButton,
 .sound-player StButton{padding: 4px;}
 
@@ -74,15 +76,14 @@ StButton.notification-applet-padding,
 
 /* Background of Elements */
 
-StButton.notification-applet-padding,
-StButton.notification-applet-padding:hover,
-StButton.notification-applet-padding:active,
-StButton.notification-applet-padding:checked,
+#notification StButton,
 .switcher-list StButton,
 .grouped-window-list-thumbnail-menu StButton,
-.calendar StButton{background-color: transparent; border: none;}
+.calendar StButton,
+.sound-player StButton:small{background-color: transparent; border-color: transparent;}
 
-#panel{background-color: rgba(238,238,238, 0.8);}
+#panel,
+.sound-player-overlay{background-color: rgba(238,238,238, 0.8);}
 
 .menu,
 .popup-combo-menu,
@@ -95,7 +96,6 @@ StButton.notification-applet-padding:checked,
 #LookingGlassDialog,
 #keyboard,
 .info-osd,
-.sound-player-overlay,
 .osd-window{background-color: #eee;}
 
 .menu-selected-app-box { border-top: 1px solid rgba(0,0,0, 0.1); padding: 8px; text-align: right;}
@@ -117,7 +117,9 @@ StEntry,
 .osd-window .level,
 .panelLeft:dnd,
 .panelCenter:dnd,
-.panelRight:dnd{ background-color: rgba(0,0,0, 0.1);}
+.panelRight:dnd,
+.sound-player StButton:small:hover,
+#notification .notification-button{ background-color: rgba(0,0,0, 0.1);}
 
 StButton:hover,
 .grouped-window-list-item-box:focus,
@@ -125,9 +127,14 @@ StButton:hover,
 .grouped-window-list-badge,
 .workspace-graph .workspace:active,
 .panel-dummy:entered,
-.osd-window .level-bar{ background-color: rgba(0,0,0, 0.2);}
+.osd-window .level-bar,
+.sound-player StButton:small:active,
+#notification .notification-button:hover{ background-color: rgba(0,0,0, 0.2);}
 
-StButton:active,StButton:checked{ background-color: rgba(0,0,0, 0.3);}
+StButton:active,
+StButton:checked,
+#notification .notification-button:active,
+#notification .notification-button:checked{ background-color: rgba(0,0,0, 0.3);}
 
 .grouped-window-list-item-box:active{ background-color: rgba(0,0,0, 0.01);}
 
@@ -157,7 +164,8 @@ StEntry,
 .window-caption,
 #LookingGlassDialog,
 .info-osd,
-.osd-window{border: 1px solid rgba(0,0,0, 0.1);}
+.osd-window,
+#notification .notification-button{border: 1px solid rgba(0,0,0, 0.1);}
 
 .osd-window .level,
 .osd-window .level-bar,
@@ -192,7 +200,9 @@ StScrollBar StButton{border-radius: 0;}
 .menu-selected-app-box  *,
 .run-dialog-label,
 .popup-menu-item:insensitive *,
-.popup-inactive-menu-item *{color: rgba(0,0,0, 0.35);}
+.popup-inactive-menu-item *,
+.popup-menu-item:insensitive,
+.popup-inactive-menu-item{color: rgba(0,0,0, 0.35);}
 
 .menu-category-button-greyed StIcon {opacity: 0.5;}
 
@@ -339,3 +349,13 @@ StScrollBar StButton{border-radius: 0;}
 
 .tile-preview,
 .tile-hud {	background-color: rgba(100,100,100, 0.3); border: 1px solid rgba(100,100,100, 0.5);}
+
+.applet-separator-line {
+    width: 1px;
+    background: rgba(0,0,0, 0.2);
+}
+
+.applet-separator-line-vertical {
+    border: 0px solid rgba(0,0,0, 0.2);
+    border-bottom-width: 1px;
+}
