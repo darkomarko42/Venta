@@ -42,12 +42,10 @@
   <border name="button_border" left="0" right="0" top="0" bottom="0"/>
 </frame_geometry>
 
-<frame_geometry name="tiled_left" parent="max">
-  <distance name="right_width" value="0"/>
+<frame_geometry name="tiled_left" parent="normal">
 </frame_geometry>
 
-<frame_geometry name="tiled_right" parent="max">
-  <distance name="left_width" value="0"/>
+<frame_geometry name="tiled_right" parent="normal">
 </frame_geometry>
 
 <frame_geometry name="nobuttons" hide_buttons="true" parent="normal">
@@ -61,10 +59,10 @@
 </frame_geometry>
 
 <frame_geometry name="border" has_title="false" rounded_top_left="false" rounded_top_right="false" parent="normal">
-  <distance name="left_width" value="1"/>
-  <distance name="right_width" value="1"/>
-  <distance name="bottom_height" value="1"/>
-  <distance name="title_vertical_pad" value="1"/>
+  <distance name="left_width" value="0"/>
+  <distance name="right_width" value="0"/>
+  <distance name="bottom_height" value="0"/>
+  <distance name="title_vertical_pad" value="0"/>
   <border name="title_border" left="0" right="0" top="0" bottom="0"/>
   <border name="button_border" left="0" right="0" top="0" bottom="0"/>
 </frame_geometry>
@@ -112,25 +110,22 @@
 
 <!-- window decorations -->
 
-<draw_ops name="ledge">
-	<line color="B_titlebar" x1="0" y1="0" x2="0" y2="height"/>
+<draw_ops name="left_edge">
+<!--left-->  <rectangle color="B_titlebar" x="0" y="0" width="1" height="height" filled="true"/>
 </draw_ops>
 
-<draw_ops name="redge">
-	<line color="B_titlebar" x1="width-1" y1="0" x2="width-1" y2="height"/>
+<draw_ops name="right_edge">
+<!--right-->  <rectangle color="B_titlebar" x="width-1" y="0" width="1" height="height" filled="true"/>
 </draw_ops>
 
-<draw_ops name="bedge">
-<line color="B_titlebar" x1="0" y1="height-1" x2="width" y2="height-1"/>
+<draw_ops name="edges">
+<!--top-->  <rectangle color="B_titlebar" x="0" y="0" width="width" height="1" filled="true"/>
+<!--left-->  <rectangle color="B_titlebar" x="0" y="0" width="1" height="height" filled="true"/>
+<!--right-->  <rectangle color="B_titlebar" x="width-1" y="0" width="1" height="height" filled="true"/>
 </draw_ops>
 
-<draw_ops name= "borders">
-<!-- top border-->	<line color="B_titlebar" x1="0" y1="0" x2="width" y2="0"/>
-<!-- bottom border <line color="B_titlebar" x1="0" y1="height-1" x2="width" y2="height-1"/>-->
-<!-- left border-->	<line color="B_titlebar" x1="0" y1="0" x2="0" y2="height"/>
-<!-- right border-->	<line color="B_titlebar" x1="width-1" y1="0" x2="width-1" y2="height"/>
-  
-<!--Highlight<rectangle color="red" x="1" y="1" width="width-2" height="0" filled="true"/>-->
+<draw_ops name="bottom_edge">
+<!--bottom-->  <rectangle color="B_titlebar" x="0" y="0" width="width" height="1" filled="true"/>
 </draw_ops>
 
 <draw_ops name="entire_background_focused">
@@ -141,19 +136,27 @@
   <rectangle color="C_titlebar_unfocused" x="0" y="0" width="width" height="height" filled="true"/>
 </draw_ops>
 
+<draw_ops name="max_focused">
+  <rectangle color="C_titlebar_focused" x="0" y="0" width="width" height="height" filled="true"/>
+</draw_ops>
+
+<draw_ops name="max_unfocused">
+  <rectangle color="C_titlebar_unfocused" x="0" y="0" width="width" height="height" filled="true"/>
+</draw_ops>
+
 <draw_ops name="dialog_background">
   <rectangle color="D_titlebar" x="0" y="0" width="width" height="height" filled="true"/>
-  <include name="borders"/>
+  <include name="edges"/>
 </draw_ops>
 
 <draw_ops name="titlebar_focused">
   <include name="entire_background_focused"/>
-  <include name="borders"/>
+  <include name="edges"/>
 </draw_ops>
 
 <draw_ops name="titlebar_unfocused">
   <include name="entire_background_unfocused"/>
-  <include name="borders"/>
+  <include name="edges"/>
 </draw_ops>
 
 <!-- button icons -->
@@ -402,9 +405,9 @@
 <frame_style name="normal_focused" geometry="normal">
   <piece position="entire_background" draw_ops="entire_background_focused"/>
   <piece position="titlebar" draw_ops="titlebar_focused"/>
-  <piece position="left_edge" draw_ops="ledge"/>
-  <piece position="right_edge" draw_ops="redge"/>
-  <piece position="bottom_edge" draw_ops="bedge"/>
+  <piece position="left_edge" draw_ops="left_edge"/>
+  <piece position="right_edge" draw_ops="right_edge"/>
+  <piece position="bottom_edge" draw_ops="bottom_edge"/>
   <piece position="title" draw_ops="title_focused"/>
   <button function="close" state="normal" draw_ops="close_focused"/>
   <button function="close" state="prelight" draw_ops="close_focused_prelight"/>
@@ -449,9 +452,9 @@
 <frame_style name="normal_unfocused" geometry="normal">
   <piece position="entire_background" draw_ops="entire_background_unfocused"/>
   <piece position="titlebar" draw_ops="titlebar_unfocused"/>
-  <piece position="left_edge" draw_ops="ledge"/>
-  <piece position="right_edge" draw_ops="redge"/>
-  <piece position="bottom_edge" draw_ops="bedge"/>
+  <piece position="left_edge" draw_ops="left_edge"/>
+  <piece position="right_edge" draw_ops="right_edge"/>
+  <piece position="bottom_edge" draw_ops="bottom_edge"/>
   <piece position="title" draw_ops="title_unfocused"/>
   <button function="close" state="normal" draw_ops="close_unfocused"/>
   <button function="close" state="prelight" draw_ops="close_unfocused_prelight"/>
@@ -495,9 +498,9 @@
 <frame_style name="dialog_window_focused" geometry="modal">
   <piece position="entire_background" draw_ops="dialog_background"/>
   <piece position="titlebar" draw_ops="dialog_background"/>
-  <piece position="left_edge" draw_ops="ledge"/>
-  <piece position="right_edge" draw_ops="redge"/>
-  <piece position="bottom_edge" draw_ops="bedge"/>
+  <piece position="left_edge" draw_ops="left_edge"/>
+  <piece position="right_edge" draw_ops="right_edge"/>
+  <piece position="bottom_edge" draw_ops="bottom_edge"/>
   <piece position="title" draw_ops="title_focused"/>
   <button function="close" state="normal" draw_ops="close_focused"/>
   <button function="close" state="prelight" draw_ops="close_focused_prelight"/>
@@ -541,9 +544,9 @@
 <frame_style name="dialog_window_unfocused" geometry="modal">
   <piece position="entire_background" draw_ops="dialog_background"/>
   <piece position="titlebar" draw_ops="dialog_background"/>
-  <piece position="left_edge" draw_ops="ledge"/>
-  <piece position="right_edge" draw_ops="redge"/>
-  <piece position="bottom_edge" draw_ops="bedge"/>
+  <piece position="left_edge" draw_ops="left_edge"/>
+  <piece position="right_edge" draw_ops="right_edge"/>
+  <piece position="bottom_edge" draw_ops="bottom_edge"/>
   <piece position="title" draw_ops="title_unfocused"/>
   <button function="close" state="normal" draw_ops="close_focused"/>
   <button function="close" state="prelight" draw_ops="close_focused_prelight"/>
@@ -585,33 +588,33 @@
 </frame_style>
 
 <frame_style name="normal_max_focused" geometry="max" parent="normal_focused">
-  <piece position="titlebar" draw_ops="entire_background_focused"/>
+  <piece position="titlebar" draw_ops="max_focused"/>
   <button function="maximize" state="normal" draw_ops="unmaximize_focused"/>
   <button function="maximize" state="pressed" draw_ops="unmaximize_focused_pressed"/>
   <button function="maximize" state="prelight" draw_ops="unmaximize_focused_prelight"/>
 </frame_style>
 
 <frame_style name="normal_max_unfocused" geometry="max" parent="normal_unfocused">
-  <piece position="titlebar" draw_ops="entire_background_unfocused"/>
+  <piece position="titlebar" draw_ops="max_unfocused"/>
   <button function="maximize" state="normal" draw_ops="unmaximize_unfocused"/>
   <button function="maximize" state="pressed" draw_ops="unmaximize_unfocused_pressed"/>
   <button function="maximize" state="prelight" draw_ops="unmaximize_unfocused_prelight"/>
 </frame_style>
 
 <frame_style name="tiled_left_focused" geometry="tiled_left" parent="normal_focused">
-  <piece position="titlebar" draw_ops="entire_background_focused"/>
+  <piece position="titlebar" draw_ops="titlebar_focused"/>
 </frame_style>
 
 <frame_style name="tiled_left_unfocused" geometry="tiled_left" parent="normal_unfocused">
-  <piece position="titlebar" draw_ops="entire_background_unfocused"/>
+  <piece position="titlebar" draw_ops="titlebar_unfocused"/>
 </frame_style>
 
 <frame_style name="tiled_right_focused" geometry="tiled_right" parent="normal_focused">
-  <piece position="titlebar" draw_ops="entire_background_focused"/>
+  <piece position="titlebar" draw_ops="titlebar_focused"/>
 </frame_style>
 
 <frame_style name="tiled_right_unfocused" geometry="tiled_right" parent="normal_unfocused">
-  <piece position="titlebar" draw_ops="entire_background_unfocused"/>
+  <piece position="titlebar" draw_ops="titlebar_unfocused"/>
 </frame_style>
 
 <frame_style name="dialog_focused" geometry="nobuttons" parent="dialog_window_focused">
