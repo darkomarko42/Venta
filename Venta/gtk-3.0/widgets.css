@@ -1179,7 +1179,8 @@ windowcontrols button{margin: 0px -3px;}
 .titlebar .right,
 .titlebar .left,
 .titlebar.chromium,
-.horizontal .end{ padding: 0 3px;}
+.horizontal .end,
+.horizontal .start{ padding: 0 3px;}
 
 .csd headerbar.default-decoration{}
 

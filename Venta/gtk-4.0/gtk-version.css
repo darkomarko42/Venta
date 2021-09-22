@@ -193,9 +193,9 @@ scale.vertical.fine-tune > marks indicator { min-height: 3px; }
  * Windows Decorations *
  ***********************/
 
-window.csd{ box-shadow: 0 6px 12px @gtk_shadow,0 0 0 1px @gtk_transparent_borders; margin: 6px;}
+window.csd{ box-shadow: 0 2px 6px @gtk_shadow,0 0 0 1px @gtk_transparent_borders; margin: 6px;}
 
-window.csd:backdrop{ box-shadow: 0 6px 12px alpha(@gtk_shadow,0.5),0 0 0 1px @gtk_transparent_borders;}
+window.csd:backdrop{ box-shadow: 0 2px 6px alpha(@gtk_shadow,0.5),0 0 0 1px @gtk_transparent_borders;}
 
 dialog decoration,
 messagedialog decoration{ box-shadow: 0 2px 4px @gtk_shadow,0 0 0 1px @gtk_transparent_borders;}
