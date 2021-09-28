@@ -92,9 +92,9 @@ style "button"
 
 	engine "murrine" {roundness = 3 border_colors = {@border_color, @border_color}}
 
-	bg[NORMAL] = @base_color
-	bg[PRELIGHT] = mix(0.1, @fg_color,@base_color)
-	bg[ACTIVE] = mix(0.2, @fg_color,@base_color)
+	bg[NORMAL] = @bg_color
+	bg[PRELIGHT] = mix(0.1, @fg_color,@bg_color)
+	bg[ACTIVE] = mix(0.2, @fg_color,@bg_color)
 }
 
 style "radiocheck" 
@@ -120,7 +120,7 @@ style "scale"
 	GtkScale       ::slider-length = 14
 	GtkScale		    ::trough-side-details = 1
 	
-	engine "murrine" {roundness = 9999}
+	engine "murrine" {roundness = 3}
 	
 	bg[NORMAL] = @selected_fg_color
 	bg[PRELIGHT] = @selected_fg_color

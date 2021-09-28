@@ -1,11 +1,20 @@
 *{color: black; icon-size: 16px; selection-background-color: rgba(0,0,0, 0.15); selected-color: black;}
 
+#panel{font-weight: bold;}
+
 /* Size of elements */
 
 #notification { spacing-rows: 10px; spacing-columns: 10px; margin-from-right-edge-of-screen: 20px; width: 34em; }
 
-.applet-box{padding: 0 10px;}
+.applet-box{padding: 0 10px; spacing: 8px;}
 .applet-box.vertical{padding: 10px 0;}
+
+.window-list-item-box{spacing: 6px;}
+
+.window-list-item-box.top,
+.window-list-item-box.bottom { padding: 0 6px; }
+.window-list-item-box.left,
+.window-list-item-box.right { padding: 6px 0; }
 
 .sound-player StButton:small{padding: 0;}
 
@@ -24,7 +33,6 @@ StEntry,
 .menu-favorites-button,
 .menu-applications-inner-box,
 .menu-applications-outer-box,
-.modal-dialog,
 #notification,
 StButton.notification-applet-padding,
 .switcher-list,
@@ -35,9 +43,12 @@ StButton.notification-applet-padding,
 .calendar-week-number,
 .datemenu-date-label,
 .info-osd,
-.osd-window {padding: 8px;}
+.osd-window,
+.window-list-preview {padding: 8px;}
 
 .popup-menu-item{padding: 6px 20px;}
+
+.modal-dialog { padding: 20px; }
 
 .menu-application-button-label:ltr,
 .menu-application-button-label:rtl,
@@ -80,10 +91,25 @@ StButton.notification-applet-padding,
 .switcher-list StButton,
 .grouped-window-list-thumbnail-menu StButton,
 .calendar StButton,
-.sound-player StButton:small{background-color: transparent; border-color: transparent;}
+.sound-player StButton:small,
+StButton.notification-applet-padding,
+StButton.notification-applet-padding:hover,
+StButton.notification-applet-padding:active,
+StButton.notification-applet-padding:checked,
+.sound-player-overlay StButton,
+.window-close,
+.window-close:hover,
+.window-close:active,
+.window-close:checked,
+StButton.popup-menu-item{background-color: transparent; border-color: transparent;}
 
 #panel,
 .sound-player-overlay{background-color: rgba(238,238,238, 0.8);}
+
+.panel-bottom{border-top: 1px solid; border-color: rgba(0,0,0, 0.1);}
+.panel-top{border-bottom: 1px solid; border-color: rgba(0,0,0, 0.1);}
+.panel-left{border-right: 1px solid; border-color: rgba(0,0,0, 0.1);}
+.panel-right{border-left: 1px solid; border-color: rgba(0,0,0, 0.1);}
 
 .menu,
 .popup-combo-menu,
@@ -96,22 +122,27 @@ StButton.notification-applet-padding,
 #LookingGlassDialog,
 #keyboard,
 .info-osd,
-.osd-window{background-color: #eee;}
+.osd-window,
+.window-list-preview,
+.grouped-window-list-badge{background-color: #eee;}
 
 .menu-selected-app-box { border-top: 1px solid rgba(0,0,0, 0.1); padding: 8px; text-align: right;}
+
+.popup-sub-menu{ background-color: rgba(0,0,0, 0.05);}
 
 StButton,
 .menu-favorites-box,
 .applet-box:hover,
 .popup-menu-item:active,
 .popup-separator-menu-item,
-.popup-sub-menu,
 StEntry,
 .menu-favorites-button:hover,
 .menu-category-button-selected,
 .menu-application-button-selected,
 .grouped-window-list-item-box:hover,
 .grouped-window-list-item-box:active:hover,
+.window-list-item-box:hover,
+.window-list-item-box:active:hover,
 .menu #notification,
 .workspace-graph .workspace,
 .osd-window .level,
@@ -122,25 +153,34 @@ StEntry,
 #notification .notification-button{ background-color: rgba(0,0,0, 0.1);}
 
 StButton:hover,
+.window-list-item-box:focus,
+.window-list-item-box:active:focus,
 .grouped-window-list-item-box:focus,
 .grouped-window-list-item-box:active:focus,
-.grouped-window-list-badge,
 .workspace-graph .workspace:active,
 .panel-dummy:entered,
 .osd-window .level-bar,
 .sound-player StButton:small:active,
-#notification .notification-button:hover{ background-color: rgba(0,0,0, 0.2);}
+#notification .notification-button:hover{ background-color: rgba(0,0,0, 0.15);}
 
 StButton:active,
 StButton:checked,
 #notification .notification-button:active,
-#notification .notification-button:checked{ background-color: rgba(0,0,0, 0.3);}
+#notification .notification-button:checked{ background-color: rgba(0,0,0, 0.2);}
 
+.window-list-item-box,
 .grouped-window-list-item-box:active{ background-color: rgba(0,0/**/,0, 0.01);}
 
+.panel-bottom .window-list-item-box:focus,
 .panel-bottom .grouped-window-list-item-box:active{ box-shadow: inset 0 -2px black;}
+
+.panel-top .window-list-item-box:focus,
 .panel-top .grouped-window-list-item-box:active{ box-shadow: inset 0 2px black;}
+
+.panel-right .window-list-item-box:focus,
 .panel-right .grouped-window-list-item-box:active{ box-shadow: inset -2px 0 black;}
+
+.panel-left .window-list-item-box:focus,
 .panel-left .grouped-window-list-item-box:active{ box-shadow: inset 2px 0 black;}
 
 .progress{background-color: rgba(51,185,84,0.5);}
@@ -165,7 +205,8 @@ StEntry,
 #LookingGlassDialog,
 .info-osd,
 .osd-window,
-#notification .notification-button{border: 1px solid rgba(0,0,0, 0.1);}
+#notification .notification-button,
+.window-list-preview{border: 1px solid rgba(0,0,0, 0.1);}
 
 .osd-window .level,
 .osd-window .level-bar,
@@ -176,7 +217,6 @@ StEntry,
 .menu-favorites-button,
 StButton,
 .menu-favorites-box,
-.grouped-window-list-badge,
 .switcher-list,
 #Tooltip,
 .menu-category-button-selected,
@@ -187,6 +227,8 @@ StButton,
 .osd-window{border-radius: 3px;}
 
 StScrollBar StButton{border-radius: 0;}
+
+.grouped-window-list-badge{border-radius: 9999px;}
 
 .menu-application-button:highlighted { font-weight: bold;}
 
@@ -228,45 +270,6 @@ StScrollBar StButton{border-radius: 0;}
     -slider-border-width: 1px;
     -slider-handle-radius: 0em;
 }
-
-.window-list-item-box {
-    color: rgba(0,0,0,1.0);
-    background-gradient-direction: vertical;
-    background-gradient-start: rgba(0,0,0,0.05);
-    background-gradient-end: rgba(0,0,0,0.2);
-    box-shadow: inset 0px 0px 1px 1px rgba(170,170,170,0.5);
-    transition-duration: 100;
-    spacing: 0.5em;
-}
-
-.window-list-item-box.top,
-.window-list-item-box.bottom {
-    padding: 0 0.5em;
-}
-.window-list-item-box:active,
-.window-list-item-box:checked,
-.window-list-item-box:focus,
-.window-list-item-box:running {
-    background-gradient-direction: vertical;
-    background-gradient-start: rgba(226,226,226,0.5);
-    background-gradient-end: rgba(122,122,122,0.5);
-    box-shadow: inset 0px 0px 1px 1px rgba(170,170,170,0.5);
-}
-.window-list-item-box:hover {
-    box-shadow: inset 0px 0px 1px 1px rgba(170,170,170,1.0);
-}
-.window-list-item-demands-attention {
-    background-gradient-start: rgba(255,52,52,0.5);
-    background-gradient-end: rgba(255,144,144,0.5);
-}
-
-.window-list-item-box .progress {
-    background-gradient-direction: vertical;
-    background-gradient-start: rgba(0,0,0,0.6);
-    background-gradient-end: rgba(0,0,0,0.3);
-    box-shadow: inset 0px 0px 1px 1px rgba(170,170,170,0.5);
-}
-
 
 /* Images */
 

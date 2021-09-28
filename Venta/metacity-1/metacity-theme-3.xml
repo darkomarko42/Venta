@@ -27,7 +27,7 @@
   <distance name="bottom_height" value="1"/>
   <distance name="left_titlebar_edge" value="1"/>
   <distance name="right_titlebar_edge" value="1"/>
-  <distance name="title_vertical_pad" value="22"/>
+  <distance name="title_vertical_pad" value="24"/>
   <border name="title_border" left="0" right="0" top="0" bottom="0"/>
   <border name="button_border" left="0" right="0" top="1" bottom="0"/>
   <aspect_ratio name="button" value="1"/>
@@ -167,7 +167,7 @@
   <image filename="assets/close.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1.0" colorize="C_title_focused"/>
 </draw_ops>
 
-<draw_ops name="close_focused_prelight">
+<draw_ops name="close_focused_prelight" >
   <include name="close_focused"/>
 </draw_ops>
 
@@ -190,7 +190,7 @@
 <!-- maximize -->
 
 <draw_ops name="maximize_focused">
-  <image filename="assets/maximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1.0" colorize="C_title_focused"/>
+  <image filename="assets/maximize.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="1.0" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="maximize_focused_prelight">
@@ -386,18 +386,18 @@
 </draw_ops>
 
 <draw_ops name="button_focused_pressed">
-  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.2" colorize="C_title_focused"/>
+  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.15" colorize="C_title_focused"/>
 </draw_ops>
 
 <draw_ops name="button_unfocused">
 </draw_ops>
 
 <draw_ops name="button_unfocused_prelight">
-  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.1" colorize="C_title_unfocused"/>
+  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.0" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <draw_ops name="button_unfocused_pressed">
-  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.2" colorize="C_title_unfocused"/>
+  <image filename="assets/button.svg" x="(width - object_width) / 2" y="(height - object_height) / 2" width="object_width" height="object_height" alpha="0.0" colorize="C_title_unfocused"/>
 </draw_ops>
 
 <!-- frame styles -->

@@ -33,13 +33,13 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1918"
-     inkscape:window-height="997"
+     inkscape:window-width="1920"
+     inkscape:window-height="996"
      id="namedview27"
      showgrid="false"
      inkscape:zoom="14.75"
-     inkscape:cx="-63.152542"
-     inkscape:cy="17.694915"
+     inkscape:cx="14.576271"
+     inkscape:cy="15.762712"
      inkscape:current-layer="svg25"
      inkscape:document-rotation="0"
      inkscape:window-x="0"
@@ -87,6 +87,15 @@
          id="feGaussianBlur10" />
     </filter>
   </defs>
+  <rect
+     style="fill:#ff4141;stroke-width:1.73803"
+     id="rect851"
+     width="28"
+     height="28"
+     x="2"
+     y="2"
+     rx="14"
+     ry="14" />
   <path
      id="rect844"
      style="fill:#ffffff;stroke-width:0.87756"

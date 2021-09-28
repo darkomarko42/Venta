@@ -1,8 +1,8 @@
 
-@import url("gtk-colors.css");
+@import url("../general/gtk-colors.css");
 @import url("gtk-version.css");
-@import url("widgets.css");
-@import url("alternative.css");
+@import url("../general/widgets.css");
+@import url("../general/alternative.css");
 
 @define-color gtk_fg_color black;
 @define-color gtk_text_color @gtk_fg_color;
