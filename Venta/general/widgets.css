@@ -35,12 +35,6 @@ headerbar .subtitle,
 
 .background{background-color: @gtk_bg_color; color: @gtk_fg_color;}
 
-menu,
-.menu,
-popover.background > arrow,
-popover.background > contents
-{background-color: @gtk_bg_color;}
-
 .view,
 list,
 notebook > stack:not(:only-child),
@@ -184,12 +178,12 @@ combobox button{ padding: 0;}
 button,
 spinbutton:not(.vertical),
 entry,
-/*progressbar progress,
+progressbar progress,
 progressbar trough,
 scale highlight,
 scale trough,
 levelbar trough,
-levelbar block,*/
+levelbar block,
 popover.background,
 popover.background > arrow,
 popover.background > contents,
@@ -344,7 +338,7 @@ entry progress {
 
 infobar entry{font-weight: normal;}
 
-.titlebar entry{color: inherit; border-width: 0 0 2px 0; box-shadow: none; background: none; }
+.titlebar entry{color: inherit; border-width: 0 0 2px 0; border-radius: 0; box-shadow: none; background: none; }
 
 /***********
  * Buttons *
@@ -357,7 +351,7 @@ button,
 .titlebar button:not(.suggested-action):not(.destructive-action).text-button,*/
 headerbar.toolbar .linked button:not(.suggested-action):not(.destructive-action),
 headerbar.toolbar  button:not(.suggested-action):not(.destructive-action).text-button
-{border: 1px solid @gtk_transparent_borders; box-shadow: 0 1px @gtk_button_shadow; background-clip: padding-box;}
+{border: 1px solid @gtk_transparent_borders; box-shadow: none; background-clip: padding-box;}
 
 button,
 .inline-toolbar button.flat,
@@ -436,20 +430,24 @@ calendar header button:disabled,
 /* TitleButton */
 
 .titlebar button{
+	border-radius: 0;
 	padding: 0;
-	min-height: 36px;
-	min-width: 36px;
+	min-height: 34px;
+	min-width: 34px;
 	border: none;
 	box-shadow: none;
 	background-color: transparent;
 	}
 	
-.titlebar.windowhandle{ min-height: 36px;}
+.titlebar button.titlebutton,
+.titlebar windowcontrols button{}
+	
+.titlebar.windowhandle{ min-height: 34px;}
 
 .titlebar.default-decoration { min-height: 30px; padding: 0 3px; } 
 
 .titlebar button.titlebutton,
-windowcontrols button{margin: 0px -3px;}
+windowcontrols button{margin: 0px -3px; }
 
 .titlebar .right,
 .titlebar .left,
@@ -475,7 +473,7 @@ button:hover,
 .titlebar button:not(.suggested-action):not(.destructive-action).text-button:hover,*/
 headerbar.toolbar .linked button:not(.suggested-action):not(.destructive-action):hover,
 headerbar.toolbar  button:not(.suggested-action):not(.destructive-action).text-button:hover
-{box-shadow: inset 0 0 0 1px alpha(currentcolor,0.4), 0 1px @gtk_button_shadow; background-image: none;}
+{box-shadow: inset 0 0 0 1px alpha(currentcolor,0.4); background-image: none;}
 
 button.flat:hover,
 .titlebar button:hover,
@@ -536,10 +534,10 @@ button.flat:checked,
 /*.titlebar button:not(.suggested-action):not(.destructive-action):checked,*/
 viewswitcher button:checked,
 spinbutton:not(.vertical) button:checked,
-notebook tab:checked,
+/*notebook tab:checked,*/
 .budgie-panel button.launcher.flat:checked,
 tabbox tab button:checked,
-tabbox tab:checked,
+/*tabbox tab:checked,*/
 notebook > header > tabs > arrow:checked,
 .dynamic-notebook.inline-toolbar button.flat:checked,
 treeview.view button:checked,
@@ -589,7 +587,8 @@ headerbar.toolbar  button:not(.suggested-action):not(.destructive-action).text-b
 .titlebar:backdrop label,
 .titlebar:backdrop image,
 menubar:backdrop,
-.menubar:backdrop
+.menubar:backdrop,
+window.background:not(.csd):not(.solid-csd) > grid.horizontal > grid.horizontal:backdrop
 {color: mix(@gtk_titlebar_fg_color, @gtk_titlebar_bg_backdrop_color, 0.5);}
 
 button:checked:disabled
@@ -963,7 +962,10 @@ scale > highlight:disabled{ background-color: mix(@gtk_bg_color,@gtk_selected_bg
 
 scale trough{padding: 0px;}
 
-scale slider{ background-color: transparent; padding: 8px; margin: -8px; box-shadow: none; border-radius: 0.0px;}
+scale slider{ background-color: transparent; box-shadow: none; border-radius: 0.0px;}
+
+scale.horizontal slider{ padding: 10px 5px; margin: -8px 0;}
+scale.vertical slider{ padding: 5px 10px; margin: 0 -8px;}
 
 scale:hover slider,
 scale.marks-after slider,
@@ -1003,7 +1005,7 @@ levelbar block{margin: 2px;}
  * Notebooks *
  *************/
  
-notebook header{ border: 1px solid @gtk_borders; background-color: mix(@tab_base_color,black,0.1);}
+notebook header{ border: 1px solid @gtk_borders; background-color: @gtk_bg_color;}
 
 notebook > header.top {border-width: 0 0 1px 0 ;}
 notebook > header.bottom {border-width: 1px 0 0 0;}
@@ -1016,13 +1018,16 @@ notebook > header.left > tabs > tab,
 notebook > header.right > tabs > tab{border: 1px solid@gtk_transparent_borders; border-width: 0px 0px 1px 0px;}
 
 notebook > header.top > tabs > tab:last-child,
-notebook > header.bottom > tabs > tab:last-child{border-width: 0px 0px 0px 0px;}
+notebook > header.bottom > tabs > tab:last-child{border-width: 0px 1px 0px 0px;}
 notebook > header.left > tabs > tab:last-child,
-notebook > header.right > tabs > tab:last-child{border-width: 0px 0px 0px 0px;}
+notebook > header.right > tabs > tab:last-child{border-width: 0px 0px 1px 0px;}
 
 /* Hdy Tab */
 tabbox tab{ border: 1px solid @gtk_borders; border-width:  0 1px 1px 1px; }
-tabbox tab:checked{ background-color: @tab_base_color;}
+
+tabbox tab:checked,
+notebook tab:checked{ background-color: @tab_base_color;}
+
 tabbox tab button{ padding: 2px; margin: 4px;}
 
 notebook tab label { padding: 3px 6px;}
@@ -1274,14 +1279,16 @@ accelerator { color: alpha(currentColor,0.5); }
 .background.popup { background-color: transparent;	border-radius: 0.0px;}
 
 menubar,
-.menubar {
+.menubar,
+window.background:not(.csd):not(.solid-csd) > grid.horizontal > grid.horizontal {
 	padding: 0px;
 	background-color: @gtk_titlebar_bg_color;
 	color: @gtk_titlebar_fg_color;
 }
 
 menubar:backdrop,
-.menubar:backdrop{background-color: @gtk_titlebar_bg_backdrop_color;}
+.menubar:backdrop,
+window.background:not(.csd):not(.solid-csd) > grid.horizontal > grid.horizontal:backdrop{background-color: @gtk_titlebar_bg_backdrop_color;}
 
 .csd menu,
 .csd .menu{ padding: 4px 1px; }

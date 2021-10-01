@@ -9,7 +9,7 @@
 @define-color gtk_bg_color #e6e6e6;
 @define-color gtk_base_color shade(@gtk_bg_color,1.5);
 
-@define-color gtk_button_color transparent;
+@define-color gtk_button_color alpha(@gtk_fg_color,0.08);
 @define-color gtk_alt_button_color @gtk_button_color;
 @define-color gtk_widget_color alpha(currentcolor,0.1);
 

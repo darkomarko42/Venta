@@ -89,6 +89,11 @@ toolbar { -GtkWidget-window-dragging: false;}
 popover.background
 { border: 1px solid @gtk_transparent_borders; 	box-shadow: 0 1px 2px @gtk_menu_shadow; }
 
+menu,
+.menu,
+popover.background
+{background-color: @gtk_bg_color;}
+
 /* Tooltips */
 
 tooltip.background { background-color: alpha(black,0.9); background-clip: padding-box; }

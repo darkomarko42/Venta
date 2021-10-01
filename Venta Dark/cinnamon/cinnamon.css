@@ -166,7 +166,11 @@ StButton:hover,
 StButton:active,
 StButton:checked,
 #notification .notification-button:active,
-#notification .notification-button:checked{ background-color: rgba(255,255,255, 0.2);}
+#notification .notification-button:checked,
+StScrollBar StButton,
+StScrollBar StButton:hover,
+StScrollBar StButton:active,
+StScrollBar StButton:checked{ background-color: rgba(255,255,255, 0.2);}
 
 .window-list-item-box,
 .grouped-window-list-item-box:active{ background-color: rgba(0,0/**/,0, 0.01);}
@@ -224,9 +228,9 @@ StButton,
 .window-caption,
 #LookingGlassDialog,
 .info-osd,
-.osd-window{border-radius: 3px;}
+.osd-window{border-radius: 0px;}
 
-StScrollBar StButton{border-radius: 0;}
+StScrollBar StButton{border-radius: 0; border-color: transparent;}
 
 .grouped-window-list-badge{border-radius: 9999px;}
 
